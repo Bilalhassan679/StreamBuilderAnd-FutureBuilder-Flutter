@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:streambuilderexamplejohannes/FutureBuilder/future_builder_example.dart';
 import 'package:streambuilderexamplejohannes/StreamBuilder/stream_builder.dart';
 
 void main() {
@@ -25,10 +26,46 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const StreamBuilderExample(),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => firsrScreen(),
+        '/FutureBuilderExample': (context) => FutureBuilderExample(),
+        '/StreamBuilderExample': (context) => StreamBuilderExample(),
+      },
+      // home: const StreamBuilderExample(),
+      // home:  firsrScreen(),
+      // home:  firsrScreen()
+
     );
   }
 }
+
+class firsrScreen extends StatelessWidget {
+  const firsrScreen({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold (
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ElevatedButton(onPressed: (){
+              Navigator.pushNamed(context, '/FutureBuilderExample');
+
+              // Navigator.push(context,
+              //     MaterialPageRoute(builder: (context) => FutureBuilderExample()));
+            }, child: const Text('FlutterBuilder')),
+            ElevatedButton(onPressed: ()=>{
+             Navigator.pushNamed(context, '/StreamBuilderExample')
+            }, child: const Text('StreamBuilder'))
+          ],
+        ),
+      ),
+    );
+  }
+}
+
 
 
 
